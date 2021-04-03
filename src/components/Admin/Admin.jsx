@@ -16,6 +16,22 @@ const getFeedback = () => {
         alert('Error in GET', err)
     })
 }
+const deleteFeedback = (dbID) => {
+    if(confirm("Are you sure you would like to delete this feedback?")) {
+        axios({
+            type: 'PUT',
+            url: '/delete/' + dbID
+        }).then((response) => {
+            console.log('back from delete')
+            getFeedback()
+        }).catch((err) => {
+            alert("Delete failed. Please try again.")
+            console.log(err)
+        })
+    } else {
+        alert("Item not deleted.")
+    }
+}
 
     useEffect(() => { getFeedback()},[])
 
@@ -29,6 +45,7 @@ const getFeedback = () => {
                     <th>Understanding</th>
                     <th>Support</th>
                     <th>Comments</th>
+                    <th>Delete</th>
                 </tr>
             </thead>
             <tbody>
@@ -39,7 +56,8 @@ const getFeedback = () => {
                                 <td key={feedback.id}>{feedback.feeling}</td>
                                 <td>{feedback.understanding}</td>
                                 <td>{feedback.support}</td>
-                                <td>{feedback.comments}</td> 
+                                <td>{feedback.comments}</td>
+                                <td><button onClick={() => deleteFeedback(feedback.id)}>🗑</button></td>
                             </tr>
                             </>
                             )   
