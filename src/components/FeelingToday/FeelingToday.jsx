@@ -1,11 +1,21 @@
 import { useDispatch } from "react-redux"
 import {useState} from 'react'
-import {Link} from 'react-router-dom'
+import {Link, useHistory} from 'react-router-dom'
 
 function FeelingToday () {
     const dispatch = useDispatch()
+    const history = useHistory()
     
     let [feeling, setFeeling] = useState("")
+
+    const sendFeelings = () => {
+        if(feeling === ""){
+            alert('A rating must be provided before moving on.')
+        } else{
+        dispatch({type: 'feeling', payload: feeling})
+        history.push('/Understanding')
+        }
+    }
 
     return(
         <>
@@ -17,9 +27,7 @@ function FeelingToday () {
             <input type="radio" name="feels" value="4" onChange={(event) => setFeeling(event.target.value)}/>4
             <input type="radio" name="feels" value="5" onChange={(event) => setFeeling(event.target.value)}/>5
             <br></br>
-            <Link to='/Understanding'>
-                <button onClick={() => dispatch({type: 'feeling', payload: feeling}) }>Click</button>
-            </Link>
+                <button onClick={() => sendFeelings()}>Click</button>
         </div>
         </>
     )

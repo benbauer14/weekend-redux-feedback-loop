@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import './App.css';
 import {HashRouter, Route} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 
 //routes
 import FeelingToday from '../FeelingToday/FeelingToday'

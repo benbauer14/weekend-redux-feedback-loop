@@ -1,12 +1,22 @@
 import { useDispatch } from "react-redux"
 import {useState} from 'react'
-import {Link} from 'react-router-dom'
+import {Link, useHistory} from 'react-router-dom'
 
 function Supported () {
         const dispatch = useDispatch()
+        const history = useHistory()
     
         let [support, setSupport] = useState("")
     
+        const sendSupport = () => {
+            if(support === ""){
+                alert('A rating must be provided before moving on.')
+            } else{
+                dispatch({type: 'support', payload: support}) 
+                history.push('/Comments')
+            }
+        }
+
         return(
             <>
             <h2>Support</h2>
@@ -17,9 +27,10 @@ function Supported () {
                 <input type="radio" name="feels" value="4" onChange={(event) => setSupport(event.target.value)}/>4
                 <input type="radio" name="feels" value="5" onChange={(event) => setSupport(event.target.value)}/>5
                 <br></br>
-                <Link to='/Comments'>
-                    <button onClick={() => dispatch({type: 'support', payload: support}) }>Click</button>
+                <Link to='/Understanding'>
+                    <button>Back</button>
                 </Link>
+                    <button onClick={() => sendSupport() }>Click</button>
             </div>
             </>
         )

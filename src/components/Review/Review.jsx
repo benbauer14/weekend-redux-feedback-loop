@@ -1,8 +1,12 @@
 import axios from 'axios'
-import {useSelector} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
+import { useHistory } from 'react-router'
 
 function Review () {
     
+    const history = useHistory()
+    const dispatch = useDispatch()
+
     const feedback= useSelector((store)=>{
         return store
     })
@@ -15,10 +19,16 @@ function Review () {
             data: feedback
         }).then((response) =>{
             console.log('back from POST:', response)
+            history.push('/ThankYou')
         }).catch ((err) =>{
             alert('Error sending feedback. Please try again')
             console.log(err)
         })
+    }
+
+    const clearFeedback = () => {
+        dispatch({type: 'reset'})
+        history.push('/')
     }
 
     return(
