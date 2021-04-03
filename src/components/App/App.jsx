@@ -10,6 +10,7 @@ import Supported from '../Supported/Supported'
 import Comments from '../Comments/Comments'
 import Review from '../Review/Review'
 import ThankYou from '../ThankYou/ThankYou'
+import Admin from '../Admin/Admin'
 
 function App() {
 
@@ -37,6 +38,9 @@ function App() {
         </Route>
         <Route path='/ThankYou'>
           <ThankYou />
+        </Route>
+        <Route path='/Admin'>
+          <Admin />
         </Route>
       </HashRouter>
     </div>

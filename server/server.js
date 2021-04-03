@@ -12,6 +12,7 @@ app.use(express.static('build'));
 const feedbackRoute = require('./routes/feedback.router')
 
 app.use('/sendFeedback', feedbackRoute)
+app.use('/getFeedback', feedbackRoute)
 /** ---------- START SERVER ---------- **/
 app.listen(PORT, () => {
     console.log('Listening on port: ', PORT);
