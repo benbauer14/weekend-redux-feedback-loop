@@ -1,3 +1,4 @@
+import axios from 'axios'
 import {useSelector} from 'react-redux'
 
 function Review () {
@@ -5,6 +6,20 @@ function Review () {
     const feedback= useSelector((store)=>{
         return store
     })
+
+    const submitFeedback = () => {
+        console.log(feedback)
+        axios({
+            method: 'POST',
+            url: '/sendFeedback',
+            data: feedback
+        }).then((response) =>{
+            console.log('back from POST:', response)
+        }).catch ((err) =>{
+            alert('Error sending feedback. Please try again')
+            console.log(err)
+        })
+    }
 
     return(
     <>
