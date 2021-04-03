@@ -12,7 +12,18 @@ router.post('/', (req,res) =>{
     })
 })
 
+router.put('/', (req, res) => {
+        console.log("in put", req.body.id)
+        pool.query(`DELETE FROM "feedback" WHERE "id"=${req.body.id}`).then((response) =>{
+        res.sendStatus(200)
+    }).catch ((err) => {
+        res.sendStatus(500)
+    })
+})
+
+
 router.get('/', (req, res) => {
+    console.log("in GET")
     pool.query(`SELECT * FROM "feedback" ORDER BY "date" ASC`).then((response) =>{
         res.send(response)
     }).catch((err) => {

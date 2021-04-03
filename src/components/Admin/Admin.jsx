@@ -16,21 +16,23 @@ const getFeedback = () => {
         alert('Error in GET', err)
     })
 }
-const deleteFeedback = (dbID) => {
-    if(confirm("Are you sure you would like to delete this feedback?")) {
-        axios({
-            type: 'PUT',
-            url: '/delete/' + dbID
-        }).then((response) => {
-            console.log('back from delete')
-            getFeedback()
-        }).catch((err) => {
-            alert("Delete failed. Please try again.")
-            console.log(err)
-        })
-    } else {
-        alert("Item not deleted.")
-    }
+const deleteFeedback = (id) => {
+if(confirm("Do you want to delete feedback?")){
+    axios({
+        method: 'PUT',
+        url: '/delete',
+        data: {id:id}
+    }).then((response) =>{
+        console.log('back from PUT:', response)
+        getFeedback();
+    }).catch ((err) =>{
+        alert('Error sending feedback. Please try again')
+        console.log(err)
+    })
+}else{
+    alert("Item not deleted")
+}
+
 }
 
     useEffect(() => { getFeedback()},[])
