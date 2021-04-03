@@ -1,0 +1,15 @@
+thead{
+    background: #033076;
+    color: white;
+    font-size: 14px;
+
+}
+table{
+    width: 80%;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+td{
+    border-bottom: solid grey 1px;
+}

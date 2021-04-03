@@ -1,5 +1,6 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
+import ('./Admin.css')
 
 
 function Admin () {
@@ -35,18 +36,27 @@ if(confirm("Do you want to delete feedback?")){
 
 }
 
+const formatDate = (sqlDate) => {
+    //format 2021-04-02T05:00:00.000Z
+    let year = sqlDate.slice(0, 4)
+    let monthday = sqlDate.slice(5, 10)
+    return monthday + "-" + year
+}
+
     useEffect(() => { getFeedback()},[])
 
     return(
         <>
-        <h2>Feeling Fine</h2>
+        <h2>Daily Feedback History</h2>
         <table>
             <thead>
                 <tr>
+                    <th>Name</th>
                     <th>Feeling</th>
                     <th>Understanding</th>
                     <th>Support</th>
                     <th>Comments</th>
+                    <th>Date Submitted</th>
                     <th>Delete</th>
                 </tr>
             </thead>
@@ -54,11 +64,13 @@ if(confirm("Do you want to delete feedback?")){
                     {feedbacks.map(feedback => {
                         return(                            
                             <>
-                            <tr>
-                                <td key={feedback.id}>{feedback.feeling}</td>
+                            <tr key={feedback.id}>
+                                <td>{feedback.name}</td>
+                                <td>{feedback.feeling}</td>
                                 <td>{feedback.understanding}</td>
                                 <td>{feedback.support}</td>
                                 <td>{feedback.comments}</td>
+                                <td>{formatDate(feedback.date)}</td>
                                 <td><button onClick={() => deleteFeedback(feedback.id)}>🗑</button></td>
                             </tr>
                             </>

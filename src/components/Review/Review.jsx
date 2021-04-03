@@ -1,6 +1,7 @@
 import axios from 'axios'
 import {useDispatch, useSelector} from 'react-redux'
 import { useHistory } from 'react-router'
+import {Button} from '@material-ui/core'
 
 function Review () {
     
@@ -38,8 +39,8 @@ function Review () {
         <p>How are understanding the content? - {feedback.understand}</p>
         <p>How supported do you feel? - {feedback.supported}</p>
         <p>Any comments you wish to share? - {feedback.comments}</p>
-        <button onClick={(event) => submitFeedback()}>Submit</button>
-        <button onClick={(event) => clearFeedback()}>Clear</button>
+        <Button variant="contained" color="primary" onClick={(event) => submitFeedback()}>Submit</Button>
+        <Button variant="contained" color="primary" onClick={(event) => clearFeedback()}>Clear</Button>
     </>
     )
 }

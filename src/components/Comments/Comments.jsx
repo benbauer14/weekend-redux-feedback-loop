@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux"
 import {useState} from 'react'
 import {Link, useHistory} from 'react-router-dom'
+import {Button} from '@material-ui/core'
 
 function Comments () {
         const dispatch = useDispatch()
@@ -19,14 +20,14 @@ function Comments () {
 
         return(
             <>
-            <h2>Comments</h2>
+            <h2>Any comments you want to leave?</h2>
             <div>
-                <input type="text" placeholder="Comments" onChange={(event) => setComments(event.target.value)}></input>
+                <input type="text" className="comments" placeholder="Comments" onChange={(event) => setComments(event.target.value)}></input>
                 <br></br>
                 <Link to='/Supported'>
-                    <button>Back</button>
+                    <Button variant="contained" >Back</Button>
                 </Link>
-                    <button onClick={() => sendComments() }>Review Feedback</button>
+                    <Button variant="contained" color="primary" onClick={() => sendComments() }>Review Feedback</Button>
             </div>
             </>
         )

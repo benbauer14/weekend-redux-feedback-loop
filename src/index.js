@@ -7,6 +7,13 @@ import { Provider } from 'react-redux';
 import {logger} from 'redux-logger';
 import { combineReducers, createStore, applyMiddleware} from 'redux'
 
+const name = (state = "", action) => {
+    if(action.type === "name"){
+        return action.payload
+    }
+    return state
+}
+
 const comments = ( state = [], action ) => {
     if(action.type === "comment"){
         return action.payload
@@ -54,7 +61,8 @@ const store=createStore(
         comments: comments,
         feeling: feeling,
         supported: supported,
-        understand: understand
+        understand: understand,
+        name: name
     }), applyMiddleware(logger)
 )
 

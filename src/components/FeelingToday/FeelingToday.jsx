@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux"
 import {useState} from 'react'
 import {Link, useHistory} from 'react-router-dom'
+import Button from '@material-ui/core/Button';
 
 function FeelingToday () {
     const dispatch = useDispatch()
@@ -19,7 +20,7 @@ function FeelingToday () {
 
     return(
         <>
-        <h2>Feeling Fine</h2>
+        <h2>How are you feeling today?</h2>
         <div>
             <input type="radio" name="feels" value="1" onChange={(event) => setFeeling(event.target.value)}/>1
             <input type="radio" name="feels" value="2" onChange={(event) => setFeeling(event.target.value)}/>2
@@ -27,7 +28,7 @@ function FeelingToday () {
             <input type="radio" name="feels" value="4" onChange={(event) => setFeeling(event.target.value)}/>4
             <input type="radio" name="feels" value="5" onChange={(event) => setFeeling(event.target.value)}/>5
             <br></br>
-                <button onClick={() => sendFeelings()}>Click</button>
+                <Button variant="contained" color="primary" onClick={() => sendFeelings()}>Next →</Button>
         </div>
         </>
     )

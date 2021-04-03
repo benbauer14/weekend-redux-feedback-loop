@@ -8,6 +8,8 @@
   padding: 20px;
   color: white;
   margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: 25% 50% 25%;
 }
 
 .App-title {
@@ -20,4 +22,27 @@
 
 h4 {
   font-style: italic;
+}
+
+h2{
+  margin: 30px;
+}
+
+input{
+  margin-bottom: 30px;
+}
+
+.comments{
+  width: 400px;
+  height:75px;
+  text-align: start;
+}
+
+.navRight{
+  margin: 30px;
+}
+
+table{
+  margin-left: auto;
+  margin-right: auto;
 }

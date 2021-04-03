@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux"
 import {useState} from 'react'
 import {Link, useHistory} from 'react-router-dom'
+import {Button} from '@material-ui/core'
 
 function Supported () {
         const dispatch = useDispatch()
@@ -19,7 +20,7 @@ function Supported () {
 
         return(
             <>
-            <h2>Support</h2>
+            <h2>How well are you being supported?</h2>
             <div>
                 <input type="radio" name="feels" value="1" onChange={(event) => setSupport(event.target.value)}/>1
                 <input type="radio" name="feels" value="2" onChange={(event) => setSupport(event.target.value)}/>2
@@ -28,9 +29,9 @@ function Supported () {
                 <input type="radio" name="feels" value="5" onChange={(event) => setSupport(event.target.value)}/>5
                 <br></br>
                 <Link to='/Understanding'>
-                    <button>Back</button>
+                    <Button variant="contained">Back</Button>
                 </Link>
-                    <button onClick={() => sendSupport() }>Click</button>
+                    <Button variant="contained" color="primary" onClick={() => sendSupport() }>Next</Button>
             </div>
             </>
         )
