@@ -10,6 +10,7 @@ function Supported () {
         let [support, setSupport] = useState("")
     
         const sendSupport = () => {
+            //do not allow for dispatch if feedback isn't provided
             if(support === ""){
                 alert('A rating must be provided before moving on.')
             } else{
@@ -31,7 +32,7 @@ function Supported () {
                 <Link to='/Understanding'>
                     <Button variant="contained">Back</Button>
                 </Link>
-                    <Button variant="contained" color="primary" onClick={() => sendSupport() }>Next</Button>
+                    <Button variant="contained" color="primary" onClick={() => sendSupport() }>Next →</Button>
             </div>
             </>
         )

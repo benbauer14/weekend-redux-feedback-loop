@@ -10,9 +10,11 @@ app.use(express.static('build'));
 
 /** ---------- EXPRESS ROUTES ---------- **/
 const feedbackRoute = require('./routes/feedback.router')
-
+//POST route
 app.use('/sendFeedback', feedbackRoute)
+//GET route
 app.use('/getFeedback', feedbackRoute)
+//DELETE route
 app.use('/delete', feedbackRoute)
 
 /** ---------- START SERVER ---------- **/

@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 import {logger} from 'redux-logger';
 import { combineReducers, createStore, applyMiddleware} from 'redux'
 
+//reducers
 const name = (state = "", action) => {
     if(action.type === "name"){
         return action.payload
@@ -56,6 +57,7 @@ const supported = ( state = [], action ) => {
     return state
 }
 
+//store
 const store=createStore(
     combineReducers({
         comments: comments,

@@ -10,6 +10,7 @@ function Comments () {
         let [comments, setComments] = useState("")
     
         const sendComments = () => {
+            //do not allow for dispatch if feedback isn't provided
             if(comments === ""){
                 alert('Comments must be provided before moving on.')
             } else{

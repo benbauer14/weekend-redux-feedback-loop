@@ -7,6 +7,7 @@ function ThankYou () {
     const history = useHistory() 
 
     const newFeedback = () => {
+        //clears store and returns to first page
         dispatch({type: 'clear'})
         history.push('/')
     }

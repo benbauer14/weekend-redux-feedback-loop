@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux"
 import {useState} from 'react'
-import {Link, useHistory} from 'react-router-dom'
+import { useHistory} from 'react-router-dom'
 import Button from '@material-ui/core/Button';
 
 function FeelingToday () {
@@ -10,6 +10,7 @@ function FeelingToday () {
     let [feeling, setFeeling] = useState("")
 
     const sendFeelings = () => {
+        //do not allow for dispatch if feedback isn't provided
         if(feeling === ""){
             alert('A rating must be provided before moving on.')
         } else{

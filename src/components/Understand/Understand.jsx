@@ -10,6 +10,7 @@ function Understand () {
         let [understand, setUnderstand] = useState("")
     
         const sendUnderstand = () => {
+             //do not allow for dispatch if feedback isn't provided
             if(understand === ""){
                 alert('A rating must be provided before moving on.')
             } else{
@@ -31,7 +32,7 @@ function Understand () {
                 <Link to='/'>
                     <Button variant="contained">Back</Button>
                 </Link>
-                <Button variant="contained" color="primary" onClick={() => sendUnderstand() }>Next</Button>
+                <Button variant="contained" color="primary" onClick={() => sendUnderstand() }>Next →</Button>
             </div>
             </>
         )

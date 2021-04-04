@@ -4,15 +4,15 @@ const pool = require('../modules/pool')
 
 router.post('/', (req,res) =>{
     console.log('in router post', req.body.feeling, req.body.understand, req.body.supported, req.body.comments)
-    let queryText = `INSERT INTO "feedback" ("feeling", "understanding", "support", "comments") VALUES ($1, $2, $3, $4)`
-    pool.query(queryText, [req.body.feeling, req.body.understand, req.body.supported, req.body.comments]).then ((results) =>{
+    let queryText = `INSERT INTO "feedback" ("feeling", "understanding", "support", "comments", "name") VALUES ($1, $2, $3, $4, $5)`
+    pool.query(queryText, [req.body.feeling, req.body.understand, req.body.supported, req.body.comments, req.body.name]).then ((results) =>{
         res.sendStatus(201)
     }).catch ((err) => {
         res.sendStatus (500)
     })
 })
 
-router.put('/', (req, res) => {
+router.delete('/', (req, res) => {
         console.log("in put", req.body.id)
         pool.query(`DELETE FROM "feedback" WHERE "id"=${req.body.id}`).then((response) =>{
         res.sendStatus(200)

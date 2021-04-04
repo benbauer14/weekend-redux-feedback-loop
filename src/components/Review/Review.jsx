@@ -9,11 +9,13 @@ function Review () {
     const dispatch = useDispatch()
 
     const feedback= useSelector((store)=>{
+        //set feedback = store
         return store
     })
 
     const submitFeedback = () => {
         console.log(feedback)
+        //post call to send feedback to server
         axios({
             method: 'POST',
             url: '/sendFeedback',
@@ -28,6 +30,7 @@ function Review () {
     }
 
     const clearFeedback = () => {
+        //dispatch to clear data after successful POST
         dispatch({type: 'reset'})
         history.push('/')
     }
@@ -40,7 +43,7 @@ function Review () {
         <p>How supported do you feel? - {feedback.supported}</p>
         <p>Any comments you wish to share? - {feedback.comments}</p>
         <Button variant="contained" color="primary" onClick={(event) => submitFeedback()}>Submit</Button>
-        <Button variant="contained" color="primary" onClick={(event) => clearFeedback()}>Clear</Button>
+        <Button variant="contained" onClick={(event) => clearFeedback()}>Clear</Button>
     </>
     )
 }

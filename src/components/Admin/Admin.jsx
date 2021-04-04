@@ -6,25 +6,29 @@ import ('./Admin.css')
 function Admin () {
 const [feedbacks, setFeedbacks] = useState([])
 
+//get feedback in database
 const getFeedback = () => {
     axios({
         type: 'GET',
         url: '/getFeedback'
     }).then ((response) =>{
+        //data in response.data.rows
         console.log(response.data.rows)
         setFeedbacks(response.data.rows)
     }).catch((err) =>{
         alert('Error in GET', err)
     })
 }
+
+//delete feedback with confirmation
 const deleteFeedback = (id) => {
 if(confirm("Do you want to delete feedback?")){
     axios({
-        method: 'PUT',
+        method: 'DELETE',
         url: '/delete',
         data: {id:id}
     }).then((response) =>{
-        console.log('back from PUT:', response)
+        console.log('back from DELETE:', response)
         getFeedback();
     }).catch ((err) =>{
         alert('Error sending feedback. Please try again')
@@ -36,13 +40,15 @@ if(confirm("Do you want to delete feedback?")){
 
 }
 
+
 const formatDate = (sqlDate) => {
+    //format date from database in MM-DD-YYYY format
     //format 2021-04-02T05:00:00.000Z
     let year = sqlDate.slice(0, 4)
     let monthday = sqlDate.slice(5, 10)
     return monthday + "-" + year
 }
-
+    //perform GET on load
     useEffect(() => { getFeedback()},[])
 
     return(

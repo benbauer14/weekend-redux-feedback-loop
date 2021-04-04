@@ -16,7 +16,12 @@ function App() {
 
   const dispatch = useDispatch()
 
+
   const randomName = () =>{
+  //use random number generator to pick a number between 0-3
+  //based on number select name for user
+  //this was used to allow for mimic users to enter feedback
+  //name data will be stored and displayed on admin
     let randomNum = Math.floor(Math.random() * 4)
     switch(randomNum){
       case 0:
