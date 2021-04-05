@@ -1,3 +1,5 @@
+-- NOTE: added a name column to the original so inserting a name column may be necessary
+
 -- Database should be prime_feedback
 CREATE DATABASE "prime_feedback";
 
